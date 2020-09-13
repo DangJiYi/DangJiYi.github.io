@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dangjiyi.github.io</id>
     <title>DangJiYi的记录站</title>
-    <updated>2020-09-13T13:23:16.548Z</updated>
+    <updated>2020-09-13T13:40:09.245Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dangjiyi.github.io"/>
     <link rel="self" href="https://dangjiyi.github.io/atom.xml"/>
@@ -11,8 +11,8 @@
     <rights>All rights reserved 2020, DangJiYi的记录站</rights>
     <entry>
         <title type="html"><![CDATA[chromebook使用体验]]></title>
-        <id>https://dangjiyi.github.io/post/chromebook-shi-yong-ti-yan/</id>
-        <link href="https://dangjiyi.github.io/post/chromebook-shi-yong-ti-yan/">
+        <id>https://dangjiyi.github.io/chromebook-shi-yong-ti-yan/</id>
+        <link href="https://dangjiyi.github.io/chromebook-shi-yong-ti-yan/">
         </link>
         <updated>2020-09-13T12:24:26.000Z</updated>
         <content type="html"><![CDATA[<p>虽然家里有一台还能用的台式，但是总觉得不是太方便，就想着搞个就笔记本玩玩，最早还有一台捡来的旧笔记本，但是硬盘的排线被我给暴力拆卸玩坏了，再加上屏幕寿终正寝，之后每天也就抱着个手机耍耍。</p>
@@ -24,8 +24,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[随笔]]></title>
-        <id>https://dangjiyi.github.io/post/sui-bi/</id>
-        <link href="https://dangjiyi.github.io/post/sui-bi/">
+        <id>https://dangjiyi.github.io/sui-bi/</id>
+        <link href="https://dangjiyi.github.io/sui-bi/">
         </link>
         <updated>2020-09-13T11:40:46.000Z</updated>
         <content type="html"><![CDATA[<p>本来是打算在自己的vps建一个网站的，但是一旦出了问题，八成花好几天也不一定能解决，什么域名、https证书啥的，看得新手头大，之前用过一段时间宝塔面板，后台web界面是挺好用的，也试着建了个简易网站，就是手打一个index.html的那种，做着玩。</p>
@@ -35,8 +35,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[搭建本站所使用的相关网站]]></title>
-        <id>https://dangjiyi.github.io/post/da-jian-ben-zhan-suo-shi-yong-de-xiang-guan-wang-zhan/</id>
-        <link href="https://dangjiyi.github.io/post/da-jian-ben-zhan-suo-shi-yong-de-xiang-guan-wang-zhan/">
+        <id>https://dangjiyi.github.io/da-jian-ben-zhan-suo-shi-yong-de-xiang-guan-wang-zhan/</id>
+        <link href="https://dangjiyi.github.io/da-jian-ben-zhan-suo-shi-yong-de-xiang-guan-wang-zhan/">
         </link>
         <updated>2020-09-13T05:26:12.000Z</updated>
         <content type="html"><![CDATA[<p>CDN https://www.cloudflare.com/<br>
