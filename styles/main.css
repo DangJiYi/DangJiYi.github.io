@@ -328,7 +328,6 @@ a {
   background-image: url('../media/images/sidebar-bg.jpg');
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
 }
 .sidebar .menu-btn {
   display: none;
@@ -616,6 +615,9 @@ a {
 }
 .archives-container .post {
   padding-bottom: 16px;
+  display: list-item;
+  list-style-type: square;
+  margin-left: 1em;
 }
 .archives-container .post .post-title {
   font-size: 18px;
