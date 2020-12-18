@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8" >
 
-<title>在台式机上安装chrome os的踩坑记录 | DangJiYi的记录站</title>
+<title>在台式机上安装chrome os的注意事项 | DangJiYi的记录站</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.0/css/all.min.css">
-<link rel="shortcut icon" href="https://dangjiyi.github.io/favicon.ico?v=1608297640664">
+<link rel="shortcut icon" href="https://dangjiyi.github.io/favicon.ico?v=1608298361376">
 <link rel="stylesheet" href="https://dangjiyi.github.io/styles/main.css">
 
 
@@ -20,11 +20,11 @@
 
 
 
-    <meta name="description" content="安装教程为少数派的一篇文章旧电脑再利用：完整版 Chrome OS 安装指南
+    <meta name="description" content="本文所使用的安装教程为少数派的一篇文章
 
 
-另外在youtube上也有几个教程，最原始的似乎是Kedar Nimbalkar的教程，你也可以搜到中文的教程视频，对于在一块硬盘上装双系统有详细的介绍。
-h..." />
+旧电脑再利用：完整版 Chrome OS 安装指南
+另外在youtube上也有几个教程，最原始的似乎是Kedar Nimbalkar的教程，你也可以搜到中文的教程视频，对于在一块硬盘上装双系统有详..." />
     <meta name="keywords" content="chrome os,chromebook" />
   </head>
   <body>
@@ -34,7 +34,7 @@ h..." />
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://dangjiyi.github.io">
-        <img src="https://dangjiyi.github.io/images/avatar.png?v=1608297640664" class="site-logo">
+        <img src="https://dangjiyi.github.io/images/avatar.png?v=1608298361376" class="site-logo">
         <h1 class="site-title">DangJiYi的记录站</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -98,18 +98,19 @@ h..." />
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">在台式机上安装chrome os的踩坑记录</h2>
+            <h2 class="post-title">在台式机上安装chrome os的注意事项</h2>
             <div class="post-date">2020-12-15</div>
             
             <div class="post-content" v-pre>
-              <p>安装教程为少数派的一篇文章<a href="https://sspai.com/post/61056">旧电脑再利用：完整版 Chrome OS 安装指南</a><br>
-<img src="https://dangjiyi.github.io/post-images/1608297489950.png" alt="" loading="lazy"></p>
+              <p>本文所使用的安装教程为少数派的一篇文章<br>
+<a href="https://sspai.com/post/61056"><img src="https://dangjiyi.github.io/post-images/1608298041719.png" alt="" loading="lazy"></a></p>
 <!-- more -->
-<p>另外在youtube上也有几个教程，最原始的似乎是<a href="https://www.youtube.com/watch?v=db4Xo_xPTR4">Kedar Nimbalkar</a>的教程，你也可以搜到中文的教程视频，对于在一块硬盘上装双系统有详细的介绍。</p>
+<p><a href="https://sspai.com/post/61056">旧电脑再利用：完整版 Chrome OS 安装指南</a><br>
+另外在youtube上也有几个教程，最原始的似乎是<a href="https://www.youtube.com/watch?v=db4Xo_xPTR4">Kedar Nimbalkar</a>的教程，你也可以搜到中文的教程视频，对于在一块硬盘上装双系统有详细的介绍。</p>
 <p>https://www.youtube.com/watch?v=tzFCipCeXFk</p>
 <p>https://www.youtube.com/watch?v=HGH96fXk4p0&amp;t=565s</p>
 <p>安装注意事项：</p>
-<p>1、个人建议尽量不要去用四代及四代以前的cpu，我使用的是台式机，赛扬g18xx(具体型号忘了，四代cpu)，按照教程装完之后开机一直重启，后来换了个赛扬g3930(好像是这个型号，七代cpu)才成功启动。</p>
+<p>1、个人建议尽量不要去用四代及四代以前的cpu，我使用的是台式机，赛扬g18xx(具体型号忘了，四代cpu)，按照教程装完之后开机一直重启，后来换了个赛扬g3930(好像是这个型号，七代cpu)才成功启动。(似乎没有关闭安全启动，但主板在折腾过程中报废，已无法验证)</p>
 <p>2、youtube上的中文教程用的都是配置好的install.sh文件，并且都告诉你要科学上网(用刷过固件能科学上网的路由器)，实际上安装的时候并不需要科学上网，按照少数派的文章，使用ubuntu作为引导盘最好，Linux Mint我没有用过，大概是apt update的时候使用的源有的在国外，导致下载速度极慢，所以才清一色的要求要科学上网，我个人使用ubuntu的时候速度正常。</p>
 <p>3、不需要换源，反正我没换，速度正常。</p>
 <p>4、少数派给的install.sh可以进行简化</p>
