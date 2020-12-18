@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dangjiyi.github.io</id>
     <title>DangJiYi的记录站</title>
-    <updated>2020-12-18T13:18:19.149Z</updated>
+    <updated>2020-12-18T13:20:43.602Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dangjiyi.github.io"/>
     <link rel="self" href="https://dangjiyi.github.io/atom.xml"/>
@@ -26,6 +26,12 @@
         <link href="https://dangjiyi.github.io/yDSAZ47u4/">
         </link>
         <updated>2020-12-15T10:12:24.000Z</updated>
+        <summary type="html"><![CDATA[<p>安装教程为少数派的一篇文章[旧电脑再利用：完整版 Chrome OS 安装指南][1]<br>
+<img src="https://dangjiyi.github.io/post-images/1608297489950.png" alt="" loading="lazy"></p>
+]]></summary>
+        <content type="html"><![CDATA[<p>安装教程为少数派的一篇文章[旧电脑再利用：完整版 Chrome OS 安装指南][1]<br>
+<img src="https://dangjiyi.github.io/post-images/1608297489950.png" alt="" loading="lazy"></p>
+]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Debian10 解决依赖问题]]></title>
