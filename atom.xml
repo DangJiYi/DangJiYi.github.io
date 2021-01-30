@@ -2,13 +2,13 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dangjiyi.github.io</id>
     <title>DangJiYi的记录站</title>
-    <updated>2020-12-18T13:35:25.949Z</updated>
+    <updated>2021-01-30T15:16:06.475Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dangjiyi.github.io"/>
     <link rel="self" href="https://dangjiyi.github.io/atom.xml"/>
     <logo>https://dangjiyi.github.io/images/avatar.png</logo>
     <icon>https://dangjiyi.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, DangJiYi的记录站</rights>
+    <rights>All rights reserved 2021, DangJiYi的记录站</rights>
     <entry>
         <title type="html"><![CDATA[debian10修改默认bash为zsh ]]></title>
         <id>https://dangjiyi.github.io/ZDcnwIRtG/</id>
@@ -26,12 +26,6 @@
         <link href="https://dangjiyi.github.io/yDSAZ47u4/">
         </link>
         <updated>2020-12-15T10:12:24.000Z</updated>
-        <summary type="html"><![CDATA[<p>本文所使用的安装教程为少数派的一篇文章<br>
-<img src="https://dangjiyi.github.io/post-images/1608298041719.png" alt="" loading="lazy"></p>
-]]></summary>
-        <content type="html"><![CDATA[<p>本文所使用的安装教程为少数派的一篇文章<br>
-<img src="https://dangjiyi.github.io/post-images/1608298041719.png" alt="" loading="lazy"></p>
-]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Debian10 解决依赖问题]]></title>
