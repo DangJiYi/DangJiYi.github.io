@@ -1,194 +1,190 @@
+<!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
+    <meta charset="utf-8" >
 
-<title>DangJiYi的记录站</title>
-<meta name="description" content="">
+<title>文章归档 | DangJiYi的记录站</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://dangjiyi.github.io/favicon.ico?v=1612438362381">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.0/css/all.min.css">
+<link rel="shortcut icon" href="https://dangjiyi.github.io/favicon.ico?v=1612438581585">
 <link rel="stylesheet" href="https://dangjiyi.github.io/styles/main.css">
 
 
 
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
+    <meta name="description" content="">
   </head>
   <body>
     <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="https://dangjiyi.github.io">
-        <img class="avatar" src="https://dangjiyi.github.io/images/avatar.png?v=1612438362381" alt="" width="32px" height="32px">
-      </a>
-      <a href="https://dangjiyi.github.io">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://dangjiyi.github.io">
+        <img src="https://dangjiyi.github.io/images/avatar.png?v=1612438581585" class="site-logo">
         <h1 class="site-title">DangJiYi的记录站</h1>
       </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
+    <div>
       
         
-          <a href="/" class="menu purple-link">
+          <a href="/" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="/archives" class="menu purple-link">
+          <a href="/archives" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="/tags" class="menu purple-link">
+          <a href="/tags" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="menu purple-link">
+          <a href="/post/about" class="site-nav">
             关于
           </a>
         
       
     </div>
   </div>
-</transition>
-
-
-        <div class="content-container">
-          
-          
-
-<div class="archives-container">
-  
-    <h2 class="year">2020</h2>
-    
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
       
-        <article class="post">
-          <a href="https://dangjiyi.github.io/ZDcnwIRtG/">
-            <h2 class="post-title">
-              debian10修改默认bash为zsh 
-              <small>2020-12-18</small>
-            </h2>
-          </a>
-        </article>
+        
       
-    
+        
       
-        <article class="post">
-          <a href="https://dangjiyi.github.io/yDSAZ47u4/">
-            <h2 class="post-title">
-              在台式机上安装chrome os的注意事项
-              <small>2020-12-15</small>
-            </h2>
-          </a>
-        </article>
+        
       
-    
+        
       
-        <article class="post">
-          <a href="https://dangjiyi.github.io/0IdSzqUPF/">
-            <h2 class="post-title">
-              Debian10 解决依赖问题
-              <small>2020-09-29</small>
-            </h2>
-          </a>
-        </article>
+        
       
-    
+        
       
-        <article class="post">
-          <a href="https://dangjiyi.github.io/BsZLK_ea4/">
-            <h2 class="post-title">
-              linux下使用aria2下载b站视频
-              <small>2020-09-23</small>
-            </h2>
-          </a>
-        </article>
+    </div>
+    <div class="site-description">
       
-    
-      
-        <article class="post">
-          <a href="https://dangjiyi.github.io/03/">
-            <h2 class="post-title">
-              chromebook使用体验
-              <small>2020-09-13</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://dangjiyi.github.io/02/">
-            <h2 class="post-title">
-              随笔
-              <small>2020-09-13</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://dangjiyi.github.io/01/">
-            <h2 class="post-title">
-              搭建本站所使用的相关网站
-              <small>2020-09-13</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-  
+    </div>
+    <div class="site-footer">
+       | <a class="rss" href="https://dangjiyi.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
 </div>
 
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          
+
+          <h2 class="archives-title">文章归档</h2>
+          <div class="archives-container">
+            
+              <h2 class="year" data-aos="fade-up">2020</h2>
+              
+                
+                  <article class="post">
+                    <a href="https://dangjiyi.github.io/ZDcnwIRtG/">
+                      <h2 class="post-title">
+                        debian10修改默认bash为zsh 
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://dangjiyi.github.io/yDSAZ47u4/">
+                      <h2 class="post-title">
+                        在台式机上安装chrome os的注意事项
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://dangjiyi.github.io/0IdSzqUPF/">
+                      <h2 class="post-title">
+                        Debian10 解决依赖问题
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://dangjiyi.github.io/BsZLK_ea4/">
+                      <h2 class="post-title">
+                        linux下使用aria2下载b站视频
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://dangjiyi.github.io/03/">
+                      <h2 class="post-title">
+                        chromebook使用体验
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://dangjiyi.github.io/02/">
+                      <h2 class="post-title">
+                        随笔
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+                
+                  <article class="post">
+                    <a href="https://dangjiyi.github.io/01/">
+                      <h2 class="post-title">
+                        搭建本站所使用的相关网站
+                      </h2>
+                    </a>
+                  </article>
+                
+              
+            
+          </div>
+
+          <div class="pagination-container">
+  
+  
+</div>
 
         </div>
-
-        <div class="site-footer">
-  <div class="slogan"></div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-   | <a class="rss" href="https://dangjiyi.github.io/atom.xml" target="_blank">RSS</a>
-</div>
-
-
       </div>
-      <script type="application/javascript">
+    </div>
 
-hljs.initHighlightingOnLoad()
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.js"></script>
+<script type="application/javascript">
+
+AOS.init();
 
 var app = new Vue({
   el: '#app',
@@ -202,6 +198,7 @@ var app = new Vue({
 
 
 
-    </div>
+
+
   </body>
 </html>
