@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>标签列表 | DangJiYi的记录站</title>
+<title>DELL 7050 MFF 黑苹果 | DangJiYi的记录站</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -20,7 +20,11 @@
 
 
 
-    <meta name="description" content="">
+    <meta name="description" content="配置:CPU i5-6400，intel ax200
+按照官方网站配置 https://dortania.github.io/OpenCore-Install-Guide/
+OC 0.6.9
+全程按照官方教程配置，结果没声音，最终选择万能淘..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
@@ -92,18 +96,44 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          <h2 class="tag-list-title">标签列表</h2>
-          <div class="tags-container">
+          <div class="post-detail">
+            <h2 class="post-title">DELL 7050 MFF 黑苹果</h2>
+            <div class="post-date">2021-05-07</div>
             
-              <a class="tag" href="https://dangjiyi.github.io/GeFsdtdat/">chrome os</a>
+            <div class="post-content" v-pre>
+              <p>配置:CPU i5-6400，intel ax200<br>
+按照官方网站配置 https://dortania.github.io/OpenCore-Install-Guide/<br>
+OC 0.6.9<br>
+全程按照官方教程配置，结果没声音，最终选择万能淘宝解决。<br>
+需要修改的点就两个<br>
+1、ACPI--&gt;&gt;--patch<br>
+需要额外添加第三行的数据(前两个没启用)<br>
+<img src="https://dangjiyi.github.io/post-images/1620400676020.png" alt="" loading="lazy"><br>
+2、DeviceProperties--&gt;&gt;--add<br>
+需要添加第一行以及右边的数据<br>
+(按照教程这个算是最终固定音频的步骤，我直接一步到位了，alcid的调试之前没成功，这个是从github上其他人的7050的EFI上直接搬过来的，上面ACPI的数据其实别人的EFI上也有)<br>
+<img src="https://dangjiyi.github.io/post-images/1620401522112.png" alt="" loading="lazy"></p>
+<p>无线   OK（）<br>
+HDMI   OK</p>
+<p>其他功能不清楚</p>
+
+            </div>
             
-              <a class="tag" href="https://dangjiyi.github.io/3jPEvN2Kd/">chromebook</a>
             
-              <a class="tag" href="https://dangjiyi.github.io/rYQqYKGlo/">aria2</a>
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://dangjiyi.github.io/alI0k5o5Y/">
+                  <h3 class="post-title">
+                    送你的名字去火星
+                  </h3>
+                </a>
+              </div>
             
-              <a class="tag" href="https://dangjiyi.github.io/A5bBMF0Ta/">搭建</a>
+
             
+
           </div>
+
         </div>
       </div>
     </div>
