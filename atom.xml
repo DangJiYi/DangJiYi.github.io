@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://dangjiyi.github.io</id>
+    <id>http://dangjiyi.github.io</id>
     <title>DangJiYi的记录站</title>
-    <updated>2021-05-08T12:24:35.432Z</updated>
+    <updated>2021-05-08T12:25:08.716Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://dangjiyi.github.io"/>
-    <link rel="self" href="https://dangjiyi.github.io/atom.xml"/>
-    <logo>https://dangjiyi.github.io/images/avatar.png</logo>
-    <icon>https://dangjiyi.github.io/favicon.ico</icon>
+    <link rel="alternate" href="http://dangjiyi.github.io"/>
+    <link rel="self" href="http://dangjiyi.github.io/atom.xml"/>
+    <logo>http://dangjiyi.github.io/images/avatar.png</logo>
+    <icon>http://dangjiyi.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, DangJiYi的记录站</rights>
     <entry>
         <title type="html"><![CDATA[DELL 7050 MFF 黑苹果]]></title>
-        <id>https://dangjiyi.github.io/0SwlZIMPo/</id>
-        <link href="https://dangjiyi.github.io/0SwlZIMPo/">
+        <id>http://dangjiyi.github.io/0SwlZIMPo/</id>
+        <link href="http://dangjiyi.github.io/0SwlZIMPo/">
         </link>
         <updated>2021-05-07T15:14:20.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[送你的名字去火星]]></title>
-        <id>https://dangjiyi.github.io/alI0k5o5Y/</id>
-        <link href="https://dangjiyi.github.io/alI0k5o5Y/">
+        <id>http://dangjiyi.github.io/alI0k5o5Y/</id>
+        <link href="http://dangjiyi.github.io/alI0k5o5Y/">
         </link>
         <updated>2021-03-15T12:26:43.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[debian10修改默认bash为zsh ]]></title>
-        <id>https://dangjiyi.github.io/ZDcnwIRtG/</id>
-        <link href="https://dangjiyi.github.io/ZDcnwIRtG/">
+        <id>http://dangjiyi.github.io/ZDcnwIRtG/</id>
+        <link href="http://dangjiyi.github.io/ZDcnwIRtG/">
         </link>
         <updated>2020-12-18T12:39:18.000Z</updated>
         <summary type="html"><![CDATA[<p>修改/etc/下passwd文件</p>
@@ -36,15 +36,15 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[在台式机上安装chrome os的注意事项]]></title>
-        <id>https://dangjiyi.github.io/yDSAZ47u4/</id>
-        <link href="https://dangjiyi.github.io/yDSAZ47u4/">
+        <id>http://dangjiyi.github.io/yDSAZ47u4/</id>
+        <link href="http://dangjiyi.github.io/yDSAZ47u4/">
         </link>
         <updated>2020-12-15T10:12:24.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[Debian10 解决依赖问题]]></title>
-        <id>https://dangjiyi.github.io/0IdSzqUPF/</id>
-        <link href="https://dangjiyi.github.io/0IdSzqUPF/">
+        <id>http://dangjiyi.github.io/0IdSzqUPF/</id>
+        <link href="http://dangjiyi.github.io/0IdSzqUPF/">
         </link>
         <updated>2020-09-29T12:15:05.000Z</updated>
         <summary type="html"><![CDATA[<p>sudo apt-get -f install<br>
@@ -56,8 +56,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[linux下使用aria2下载b站视频]]></title>
-        <id>https://dangjiyi.github.io/BsZLK_ea4/</id>
-        <link href="https://dangjiyi.github.io/BsZLK_ea4/">
+        <id>http://dangjiyi.github.io/BsZLK_ea4/</id>
+        <link href="http://dangjiyi.github.io/BsZLK_ea4/">
         </link>
         <updated>2020-09-23T10:37:18.000Z</updated>
         <summary type="html"><![CDATA[<p>使用平台debian10</p>
@@ -69,8 +69,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[chromebook使用体验]]></title>
-        <id>https://dangjiyi.github.io/03/</id>
-        <link href="https://dangjiyi.github.io/03/">
+        <id>http://dangjiyi.github.io/03/</id>
+        <link href="http://dangjiyi.github.io/03/">
         </link>
         <updated>2020-09-13T12:24:26.000Z</updated>
         <summary type="html"><![CDATA[<p>虽然家里有一台还能用的台式，但是总觉得不是太方便，就想着搞个就笔记本玩玩，最早还有一台捡来的旧笔记本，但是硬盘的排线被我给暴力拆卸玩坏了，再加上屏幕寿终正寝，之后每天也就抱着个手机耍耍。</p>
@@ -80,8 +80,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[随笔]]></title>
-        <id>https://dangjiyi.github.io/02/</id>
-        <link href="https://dangjiyi.github.io/02/">
+        <id>http://dangjiyi.github.io/02/</id>
+        <link href="http://dangjiyi.github.io/02/">
         </link>
         <updated>2020-09-13T11:40:46.000Z</updated>
         <summary type="html"><![CDATA[<p>本来是打算在自己的vps建一个网站的，但是一旦出了问题，八成花好几天也不一定能解决，什么域名、https证书啥的，看得新手头大，之前用过一段时间宝塔面板，后台web界面是挺好用的，也试着建了个简易网站，就是手打一个index.html的那种，做着玩。</p>
@@ -91,8 +91,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[搭建本站所使用的相关网站]]></title>
-        <id>https://dangjiyi.github.io/01/</id>
-        <link href="https://dangjiyi.github.io/01/">
+        <id>http://dangjiyi.github.io/01/</id>
+        <link href="http://dangjiyi.github.io/01/">
         </link>
         <updated>2020-09-13T05:26:12.000Z</updated>
         <summary type="html"><![CDATA[<p>CDN https://www.cloudflare.com/<br>
