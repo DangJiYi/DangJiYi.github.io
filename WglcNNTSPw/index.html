@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>同花顺、通达信涨跌停代码 | DangJiYi的记录站</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://eee.dangjiyi.eu.org/favicon.ico?v=1742652468051">
+<link rel="stylesheet" href="https://eee.dangjiyi.eu.org/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="同花顺分时代码，显示股票概念和涨停跌停数量（修改分时）
+上涨家数:=INDEXDATA(&quot;1A0002&quot;,&amp;RISECOUNT) + INDEXDATA(&quot;399002&quot;,&amp;RISEC..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://eee.dangjiyi.eu.org">
+        <img src="https://eee.dangjiyi.eu.org/images/avatar.png?v=1742652468051" class="site-logo">
+        <h1 class="site-title">DangJiYi的记录站</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      
+    </div>
+    <div class="site-footer">
+       | <a class="rss" href="https://eee.dangjiyi.eu.org/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">同花顺、通达信涨跌停代码</h2>
+            <div class="post-date">2025-03-22</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="同花顺分时代码显示股票概念和涨停跌停数量修改分时">同花顺分时代码，显示股票概念和涨停跌停数量（修改分时）</h1>
+<p>上涨家数:=INDEXDATA(&quot;1A0002&quot;,&amp;RISECOUNT) + INDEXDATA(&quot;399002&quot;,&amp;RISECOUNT);<br>
+下跌家数:=INDEXDATA(&quot;1A0002&quot;,&amp;FALLCOUNT) + INDEXDATA(&quot;399002&quot;,&amp;FALLCOUNT);<br>
+DRAWTEXT_FIX(ISLASTBAR,0.6,0.84,1,&quot;上涨家数：&quot;+TOSTRING(上涨家数,0)),colorred;<br>
+DRAWTEXT_FIX(ISLASTBAR,0.8,0.84,1,&quot;下跌家数：&quot;+TOSTRING(下跌家数,0)),colorgreen;<br>
+涨停:=INDEXDATA(&quot;1A0002&quot;,&amp;RISELIMITCOUNT)+INDEXDATA(&quot;399002&quot;,&amp;RISELIMITCOUNT);<br>
+跌停:=INDEXDATA(&quot;1A0002&quot;,&amp;FALLLIMITCOUNT)+INDEXDATA(&quot;399002&quot;,&amp;FALLLIMITCOUNT);<br>
+DRAWTEXT_FIX(ISLASTBAR,0.6,0.92,1,&quot;涨停：&quot;+TOSTRING(涨停,0)),colorlired;<br>
+DRAWTEXT_FIX(ISLASTBAR,0.8,0.92,1,&quot;跌停：&quot;+TOSTRING(跌停,0)),colorliblue;<br>
+DRAWTEXT_FIX(1,0.05,0.68,0,'概念：'+BLOCK(3,15)),colorcyan;<br>
+DRAWTEXT_FIX(1,0.05,0.92,0,'行业：'+BLOCK(0,00)+'<strong>'+BLOCK(1,0)+'</strong>'+BLOCK(2,0)),colormagenta;</p>
+<p>NEW1:=IF(ISNULL(NEW[1]) OR FORMATTIME(1)&lt;2,PRE,NEW[1]);<br>
+最新:IF(ISNULL(NEW),NEW1,NEW);<br>
+IF (ISNULL(RANGE_AVG_PRICE) OR RANGE_AVG_PRICE &lt;= 0)<br>
+{<br>
+IF((MARKETTYPE<mark>16 OR MARKETTYPE</mark>32)AND CODETYPE<mark>0)<br>
+{<br>
+领先:(INDEXLEAD/10000 + 1)*PRE;<br>
+}<br>
+ELSE IF (MARKETTYPE == 232 OR MARKETTYPE == 56 OR MARKETTYPE</mark>64 OR MARKETTYPE<mark>128 OR MARKETTYPE == 80 OR MARKETTYPE</mark>88 OR (VOL &gt; 1 AND VOL&lt;100))<br>
+{<br>
+b=SUBSAMEDAY(&amp;VOL) ;<br>
+m=SUM(b<em>最新,0);<br>
+均价:IF(m&gt;0,m/VOL,PRE);<br>
+}<br>
+ELSE IF(CODETYPE!=0 AND MONEY&gt;0 AND MARKETTYPE != 48 AND MARKETTYPE != 104)<br>
+{<br>
+IF(ISNULL(MONEY) OR ISNULL(VOL) OR VOL<mark>0 OR MONEY</mark>0)<br>
+均价:IF(ISNULL(均价[1]),PRE,均价[1]);<br>
+ELSE IF(VOL<mark>VOL[1] OR MONEY</mark>MONEY[1])<br>
+均价:均价[1];<br>
+ELSE<br>
+均价:MONEY/VOL;<br>
+}<br>
+ELSE IF (MARKETTYPE == 176)<br>
+{<br>
+b=SUBSAMEDAY(&amp;MONEY);<br>
+m=SUM(b</em>最新,0);<br>
+IF(m&gt;0)<br>
+均价:m/MONEY;<br>
+}<br>
+}<br>
+ELSE<br>
+{<br>
+均价:RANGE_AVG_PRICE;<br>
+}<br>
+DRAWGBK(MARKETTYPE==32 AND FORMATTIME(1)&lt;10 AND TRADETIME&gt;242,RGB(0,0,128));</p>
+<p>RETURN;</p>
+<p>hx_star;<br>
+hx_star_p;</p>
+<h1 id="同花顺k线代码修改均线">同花顺k线代码（修改均线）</h1>
+<p>IF (k&gt;0)<br>
+MA$1:MA(CLOSE, N1);<br>
+IF (k&gt;1)<br>
+MA$2:MA(CLOSE, N2);<br>
+IF (k&gt;2)<br>
+MA$3:MA(CLOSE, N3);<br>
+IF (k&gt;3)<br>
+MA$4:MA(CLOSE, N4);<br>
+IF (k&gt;4)<br>
+MA$5:MA(CLOSE, N5);<br>
+IF (k&gt;5)<br>
+MA$6:MA(CLOSE, N6);<br>
+IF (k&gt;6)<br>
+MA$7:MA(CLOSE, N7);<br>
+IF (k&gt;7)<br>
+MA$8:MA(CLOSE, N8);</p>
+<p>DRAWTEXT_FIX(1,0.03,0.03,0,'地域:'+BLOCK(2,0)),colorgreen;<br>
+DRAWTEXT_FIX(1,0.1,0.03,0,'行业:'+BLOCK(0,0)+'<em>/</em>'+BLOCK(10)),colorgreen;<br>
+DRAWTEXT_FIX(1,0.25,0.03,0,'概念:'+BLOCK(3,25)),colorgreen;</p>
+<h1 id="通达信分时代码">通达信分时代码</h1>
+<p>DRAWTEXT_FIX(ISLASTBAR, 0.01, 0.8, 0, STRCAT('概念：', GNBLOCK)), COLORCYAN;{右，下，左};<br>
+DRAWTEXT_FIX(ISLASTBAR, 0.01, 0.9, 0, STRCAT6('行业：',HYBLOCK,'<em>',MOREHYBLOCK,'</em>',DYBLOCK)), COLORMAGENTA;{右，下，左};</p>
+<p>{ 代码功能：主图动态显示全市场涨跌家数及停板家数 }</p>
+<p>{计算上涨总家数和下跌总家数}</p>
+<p>上涨总家数:MAINZSHQ(1,6)+MAINZSHQ(2,6),NODRAW;<br>
+下跌总家数:MAINZSHQ(1,7)+MAINZSHQ(2,7),NODRAW;</p>
+<p>{上涨总家数:TOTALHQINFO(1), NODRAW;<br>
+下跌总家数:TOTALHQINFO(2), NODRAW;}<br>
+涨停数:TOTALHQINFO(3), NODRAW;<br>
+跌停数:TOTALHQINFO(4), NODRAW;</p>
+<p>{显示流通市值}<br>
+流通市值:FINANCE(40)/100000000, NODRAW;</p>
+<p>DRAWTEXT_FIX(ISLASTBAR, 0.37, 0.7, 0, STRCAT('流通市值(亿):', CON2STR(流通市值,2) )), COLORLICYAN;{右，下，左};</p>
+<p>DRAWTEXT_FIX(ISLASTBAR, 0.01, 0.6, 0, STRCAT('上涨：', CON2STR(上涨总家数,0) )), COLORRED;{右，下，左};<br>
+DRAWTEXT_FIX(ISLASTBAR, 0.19, 0.6, 0, STRCAT('下跌：', CON2STR(下跌总家数,0) )), COLORGREEN;{右，下，左};</p>
+<p>DRAWTEXT_FIX(ISLASTBAR, 0.01, 0.7, 0, STRCAT('涨停：',CON2STR(涨停数,0))), COLORLIRED;{右，下，左};<br>
+DRAWTEXT_FIX(ISLASTBAR, 0.19, 0.7, 0, STRCAT('跌停：',CON2STR(跌停数,0))), COLORLIGREEN;{右，下，左};</p>
+<h1 id="通达信k线代码均线修改版">通达信k线代码（均线修改版）</h1>
+<p>MA1:MA(CLOSE,M1);<br>
+MA2:MA(CLOSE,M2);<br>
+MA3:MA(CLOSE,M3);<br>
+MA4:MA(CLOSE,M4);<br>
+MA5:MA(CLOSE,M5);<br>
+MA6:MA(CLOSE,M6);<br>
+MA7:MA(CLOSE,M7);<br>
+MA8:MA(CLOSE,M8);</p>
+<p>DRAWTEXT_FIX(ISLASTBAR, 0.01, 0.05, 0, STRCAT('概念：',GNBLOCK )), COLORCYAN;{右，下，左};<br>
+DRAWTEXT_FIX(ISLASTBAR, 0.01, 0.15, 0, STRCAT6('行业：',HYBLOCK,'<em>',MOREHYBLOCK,'</em>',DYBLOCK)), COLORMAGENTA;{右，下，左};</p>
+<p>{显示流通市值}<br>
+流通市值:FINANCE(40)/100000000, NODRAW;</p>
+<p>DRAWTEXT_FIX(ISLASTBAR, 0.01, 0.25, 0, STRCAT('流通市值(亿):', CON2STR(流通市值,2) )), COLORLICYAN;{右，下，左};</p>
+<h1 id="缩量爆量指标">缩量爆量指标</h1>
+<p>COUNT(AMOUNT&lt;REF(AMOUNT,1)*0.6,1);<br>
+COUNT(AMOUNT&gt;REF(AMOUNT,1)*1.4,1);</p>
+<p>成交额<br>
+小于前一天的0.6倍<br>
+大于前一天的1.4倍</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://eee.dangjiyi.eu.org/Sdi9BlJ9Zx/">
+                  <h3 class="post-title">
+                    中长线
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>关于安卓anddrop无法发现win10的解决办法 | DangJiYi的记录站</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://eee.dangjiyi.eu.org/favicon.ico?v=1742652468051">
+<link rel="stylesheet" href="https://eee.dangjiyi.eu.org/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="1、前提：使用wifi、打开蓝牙（即装有无线网卡的win10设备）
+2、网络配置文件改为专用
+3、win10里有个CDPUserSvc服务，若关闭的话也会导致无法使用
+cmd--regedit--HKEY_LOCAL_MACHINE\SYS..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://eee.dangjiyi.eu.org">
+        <img src="https://eee.dangjiyi.eu.org/images/avatar.png?v=1742652468051" class="site-logo">
+        <h1 class="site-title">DangJiYi的记录站</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      
+    </div>
+    <div class="site-footer">
+       | <a class="rss" href="https://eee.dangjiyi.eu.org/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">关于安卓anddrop无法发现win10的解决办法</h2>
+            <div class="post-date">2023-06-18</div>
+            
+            <div class="post-content" v-pre>
+              <p>1、前提：使用wifi、打开蓝牙（即装有无线网卡的win10设备）<br>
+2、网络配置文件改为专用<br>
+3、win10里有个CDPUserSvc服务，若关闭的话也会导致无法使用<br>
+cmd--regedit--HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services<br>
+OneSyncSvc的start属性修改为2<br>
+OneSyncSvc_随机数字 的start属性修改为2<br>
+UserDataSvc的start属性修改为2<br>
+UserDataSvc_随机数字 的start属性修改为2<br>
+CDPSvc的start属性修改为2<br>
+CDPUserSvc的start属性修改为2<br>
+CDPUserSvc_随机数字 的start属性修改为2<br>
+全部调完后重启电脑即可发现，若想关闭就全改为3</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://eee.dangjiyi.eu.org/accUQvA4s/">
+                  <h3 class="post-title">
+                    大连理工统考英语b 202304试题
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>
