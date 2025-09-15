@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人文件分享 - --</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="编程, 技术博客, Python">
+    
+    <!-- 新增：添加网页标签图标（favicon） -->
+    <link rel="icon" href="static/images/avatar.png" type="image/png">
+    <link rel="shortcut icon" href="static/images/avatar.png" type="image/png">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="个人文件分享 - --">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/prism.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="https://eee.dangjiyi.eu.org/" class="brand-link">
+                    <i class="fas fa-robot"></i>
+                    <span>静态博客站</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="https://eee.dangjiyi.eu.org/" class="nav-link">首页</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="main-content">
+        
+<article class="post-container">
+    <!-- 文章头部 -->
+    <header class="post-header">
+        <h1 class="post-title">个人文件分享</h1>
+        <div class="post-meta">
+            <time class="post-date">
+                <i class="far fa-calendar"></i>
+                2022-04-24
+            </time>
+            <span class="post-author">
+                <i class="far fa-user"></i>
+                  
+            </span>
+            
+            <div class="post-tags">
+                
+                <span class="tag">分享</span>
+                
+            </div>
+            
+        </div>
+    </header>
+
+    <!-- 文章内容 -->
+    <div class="post-content">
+        <p>tampermonkey脚本分享：<br />
+https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBc0t6RUVjcVhUR21tQ1NROFd2NGVtYzNEa1pj.jpg<br />
+使用：实用工具--》从URL安装</p>
+        <!-- 图片放大功能样式 -->
+        <style>
+            /* 图片容器：居中显示，添加间距 */
+            .img-zoom-container {
+                text-align: center;
+                margin: 1.5rem 0;
+            }
+
+            /* 可点击放大的图片样式 */
+            .zoomable-img {
+                max-width: 100%;
+                height: auto;
+                cursor: zoom-in; /* 鼠标悬停显示放大镜图标 */
+                border-radius: 4px;
+                transition: transform 0.2s ease;
+            }
+
+            .zoomable-img:hover {
+                transform: scale(1.01); /* 轻微放大效果，提示可点击 */
+            }
+
+            /* 放大后的遮罩层（全屏显示） */
+            .image-modal {
+                display: none; /* 默认隐藏 */
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.9); /* 半透明黑色背景 */
+                z-index: 9999; /* 确保在最上层 */
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                overflow: hidden;
+            }
+
+            /* 放大后的图片容器（用于拖拽） */
+            .modal-image-wrapper {
+                position: relative;
+                cursor: grab;
+            }
+
+            .modal-image-wrapper.grabbing {
+                cursor: grabbing;
+            }
+
+            /* 放大后的图片 */
+            .modal-content {
+                max-width: 95%; /* 最大宽度不超过屏幕95% */
+                max-height: 90%; /* 最大高度不超过屏幕90% */
+                transition: transform 0.1s ease;
+                transform-origin: center;
+            }
+
+            /* 关闭按钮 */
+            .close-modal {
+                position: absolute;
+                top: 20px;
+                right: 30px;
+                color: white;
+                font-size: 36px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: color 0.2s;
+                z-index: 10000;
+            }
+
+            .close-modal:hover {
+                color: #ccc; /* 鼠标悬停变灰 */
+            }
+
+            /* 缩放提示 */
+            .zoom-hint {
+                position: absolute;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                color: white;
+                background: rgba(0,0,0,0.5);
+                padding: 5px 10px;
+                border-radius: 4px;
+                font-size: 0.9rem;
+            }
+        </style>
+
+        <!-- 图片放大功能脚本（带滚轮缩放） -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // 创建遮罩层元素
+                const modal = document.createElement('div');
+                modal.className = 'image-modal';
+                modal.innerHTML = `
+                    <span class="close-modal">&times;</span>
+                    <div class="zoom-hint">鼠标滚轮缩放 | 拖动移动 | ESC关闭</div>
+                    <div class="modal-image-wrapper">
+                        <img class="modal-content" src="" alt="放大后的图片">
+                    </div>
+                `;
+                document.body.appendChild(modal);
+
+                // 获取元素引用
+                const modalImg = modal.querySelector('.modal-content');
+                const closeBtn = modal.querySelector('.close-modal');
+                const imgWrapper = modal.querySelector('.modal-image-wrapper');
+                const modalContainer = modal;
+
+                // 缩放和位置变量
+                let scale = 1;          // 缩放比例
+                let translateX = 0;     // X轴偏移
+                let translateY = 0;     // Y轴偏移
+                let lastX = 0;          // 上次鼠标X位置
+                let lastY = 0;          // 上次鼠标Y位置
+                let isDragging = false; // 是否正在拖拽
+
+                // 重置图片状态
+                function resetImageState() {
+                    scale = 1;
+                    translateX = 0;
+                    translateY = 0;
+                    updateImageTransform();
+                }
+
+                // 更新图片变换
+                function updateImageTransform() {
+                    modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+                }
+
+                // 点击图片放大
+                document.querySelectorAll('.zoomable-img').forEach(img => {
+                    img.addEventListener('click', function() {
+                        modalContainer.style.display = 'flex';
+                        modalImg.src = this.src;
+                        resetImageState(); // 每次打开重置状态
+                    });
+                });
+
+                // 关闭放大视图
+                function closeModal() {
+                    modalContainer.style.display = 'none';
+                    resetImageState();
+                }
+
+                // 点击关闭按钮关闭
+                closeBtn.addEventListener('click', closeModal);
+
+                // 点击遮罩层空白处关闭
+                modalContainer.addEventListener('click', function(e) {
+                    if (e.target === modalContainer) {
+                        closeModal();
+                    }
+                });
+
+                // 按ESC键关闭
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && modalContainer.style.display === 'flex') {
+                        closeModal();
+                    }
+                });
+
+                // 鼠标滚轮缩放
+                imgWrapper.addEventListener('wheel', function(e) {
+                    e.preventDefault(); // 阻止页面滚动
+
+                    // 获取鼠标在图片上的位置（相对于图片中心）
+                    const rect = modalImg.getBoundingClientRect();
+                    const mouseX = e.clientX - rect.left - rect.width / 2;
+                    const mouseY = e.clientY - rect.top - rect.height / 2;
+
+                    // 根据滚轮方向调整缩放比例
+                    const delta = e.deltaY < 0 ? 0.1 : -0.1;
+                    const newScale = Math.max(0.5, Math.min(scale + delta, 5)); // 限制缩放范围0.5-5倍
+
+                    // 计算缩放时的位置偏移，使鼠标指向的点保持在原位
+                    translateX = mouseX * (scale - newScale) / scale + translateX;
+                    translateY = mouseY * (scale - newScale) / scale + translateY;
+
+                    scale = newScale;
+                    updateImageTransform();
+                });
+
+                // 鼠标按下开始拖拽
+                imgWrapper.addEventListener('mousedown', function(e) {
+                    e.preventDefault();
+                    isDragging = true;
+                    lastX = e.clientX;
+                    lastY = e.clientY;
+                    imgWrapper.classList.add('grabbing');
+                });
+
+                // 鼠标移动时拖拽
+                document.addEventListener('mousemove', function(e) {
+                    if (!isDragging) return;
+                    
+                    // 计算移动距离
+                    const deltaX = e.clientX - lastX;
+                    const deltaY = e.clientY - lastY;
+                    
+                    // 更新位置
+                    translateX += deltaX;
+                    translateY += deltaY;
+                    
+                    // 保存当前位置
+                    lastX = e.clientX;
+                    lastY = e.clientY;
+                    
+                    updateImageTransform();
+                });
+
+                // 鼠标释放结束拖拽
+                document.addEventListener('mouseup', function() {
+                    isDragging = false;
+                    imgWrapper.classList.remove('grabbing');
+                });
+
+                // 鼠标离开窗口结束拖拽
+                document.addEventListener('mouseleave', function() {
+                    isDragging = false;
+                    imgWrapper.classList.remove('grabbing');
+                });
+            });
+        </script>
+        
+    </div>
+
+    <!-- 文章导航 -->
+    <nav class="post-navigation">
+        
+        
+    </nav>
+</article>
+
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content" style="text-align: center;">
+            <p>&copy; <span id="current-year"></span> 版权所有</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="static/js/main.js"></script>
+    <script src="static/js/prism.js"></script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

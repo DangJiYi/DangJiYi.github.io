@@ -1,275 +1,1328 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" >
-
-<title>DangJiYi的记录站</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://eee.dangjiyi.eu.org/favicon.ico?v=1742652468051">
-<link rel="stylesheet" href="https://eee.dangjiyi.eu.org/styles/main.css">
-
-
-
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
-
-
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
     <meta name="description" content="">
+    <meta name="keywords" content="编程, 技术博客, Python">
     
-  </head>
-  <body>
-    <div id="app" class="main">
+    <!-- 新增：添加网页标签图标（favicon） -->
+    <link rel="icon" href="static/images/avatar.png" type="image/png">
+    <link rel="shortcut icon" href="static/images/avatar.png" type="image/png">
 
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="https://eee.dangjiyi.eu.org">
-        <img src="https://eee.dangjiyi.eu.org/images/avatar.png?v=1742652468051" class="site-logo">
-        <h1 class="site-title">DangJiYi的记录站</h1>
-      </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
-    </div>
-    <div>
-      
-        
-          <a href="/" class="site-nav">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="site-nav">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="site-nav">
-            标签
-          </a>
-        
-      
-        
-          <a href="/about" class="site-nav">
-            关于
-          </a>
-        
-      
-    </div>
-  </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      
-    </div>
-    <div class="site-footer">
-       | <a class="rss" href="https://eee.dangjiyi.eu.org/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
-
-
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://eee.dangjiyi.eu.org/WglcNNTSPw/">
-                  <h2 class="post-title">同花顺、通达信涨跌停代码</h2>
+    <!-- Open Graph -->
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/prism.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="https://eee.dangjiyi.eu.org/" class="brand-link">
+                    <i class="fas fa-robot"></i>
+                    <span>静态博客站</span>
                 </a>
-                <div class="post-date">
-                  2025-03-22
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://eee.dangjiyi.eu.org/Sdi9BlJ9Zx/">
-                  <h2 class="post-title">中长线</h2>
-                </a>
-                <div class="post-date">
-                  2025-02-01
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://eee.dangjiyi.eu.org/krRhVBH4P/">
-                  <h2 class="post-title">2024新手炒股熊市思路</h2>
-                </a>
-                <div class="post-date">
-                  2024-08-25
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://eee.dangjiyi.eu.org/Y1h06aXH9/">
-                  <h2 class="post-title">书单2</h2>
-                </a>
-                <div class="post-date">
-                  2023-11-26
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://eee.dangjiyi.eu.org/t0WoaTc6D/">
-                  <h2 class="post-title">游戏列表</h2>
-                </a>
-                <div class="post-date">
-                  2023-09-08
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://eee.dangjiyi.eu.org/9LUZrhaXt/">
-                  <h2 class="post-title">下载谷歌云盘文件</h2>
-                </a>
-                <div class="post-date">
-                  2023-08-20
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://eee.dangjiyi.eu.org/KFDcWOiv4/">
-                  <h2 class="post-title">关于安卓anddrop无法发现win10的解决办法</h2>
-                </a>
-                <div class="post-date">
-                  2023-06-18
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://eee.dangjiyi.eu.org/accUQvA4s/">
-                  <h2 class="post-title">大连理工统考英语b 202304试题</h2>
-                </a>
-                <div class="post-date">
-                  2023-04-23
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://eee.dangjiyi.eu.org/cikVfC36H/">
-                  <h2 class="post-title">记人生中第一次相亲</h2>
-                </a>
-                <div class="post-date">
-                  2023-03-03
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://eee.dangjiyi.eu.org/5vB936b3F/">
-                  <h2 class="post-title">番剧下载、谷歌镜像网址推荐</h2>
-                </a>
-                <div class="post-date">
-                  2023-02-04
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-
-          <div class="pagination-container">
-  
-  
-    <a href="https://eee.dangjiyi.eu.org/page/2" class="next">下一页 <i class="icon-arrow-ios-forward-outline"></i></a>
-  
-</div>
-
+            </div>
+            <div class="nav-menu">
+                <a href="https://eee.dangjiyi.eu.org/" class="nav-link">首页</a>
+            </div>
         </div>
-      </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="main-content">
+        
+<!-- 英雄区域 -->
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">
+            <span class="gradient-text">静态博客站</span>
+        </h1>
+        <p class="hero-subtitle">
+            DangJiYI的记录站
+        </p>
+        <div class="hero-stats">
+            <div class="stat">
+                <span class="stat-number">29</span>
+                <span class="stat-label">文章</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">29</span>
+                <span class="stat-label">标签</span>
+            </div>
+        </div>
     </div>
+    <div class="hero-visual">
+        <div class="floating-card card-1"></div>
+        <div class="floating-card card-2"></div>
+        <div class="floating-card card-3"></div>
+    </div>
+</section>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
+<!-- 文章列表 -->
+<section class="posts-section">
+    <div class="container">
+        <h2 class="section-title">最新文章</h2>
+        
+        <div class="posts-grid">
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2025-09-15
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="250915.html">
+                            通达信、同花顺涨跌停代码
+                        </a>
+                    </h3>
 
-AOS.init();
+                    <p class="post-excerpt">
+                          
+                    </p>
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">炒股</span>
+                        
+                        <span class="tag">代码</span>
+                        
+                    </div>
+                    
+                </div>
 
-</script>
+                <div class="card-footer">
+                    <a href="250915.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2025-09-15
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="2509152.html">
+                            中长线（三次修改）
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">炒股</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="2509152.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2025-02-01
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="250201.html">
+                            中长线（二次修改）
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">炒股</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="250201.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2025-01-03
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="250103.html">
+                            中长线（暂定）
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">炒股</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="250103.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2024-08-25
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="240825.html">
+                            2024新手炒股熊市思路
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">炒股</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="240825.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2023-11-26
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="231126.html">
+                            书单2
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">分享</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="231126.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2023-09-08
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="230908.html">
+                            游戏列表
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">游戏</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="230908.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2023-08-20
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="230820.html">
+                            下载谷歌云盘文件
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">教程</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="230820.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2023-06-18
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="230618.html">
+                            关于安卓anddrop无法发现win10的解决办法
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">隔空传送</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="230618.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2023-04-23
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="230423.html">
+                            大连理工统考英语b 202304试题
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">试卷</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="230423.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2023-03-03
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="230303.html">
+                            记人生xxxxxx
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">记录</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="230303.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2023-02-04
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="230204.html">
+                            番剧下载、谷歌镜像网址推荐
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">分享</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="230204.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2022-11-23
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="221123.html">
+                            通过注册表设置开机启动
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">自启动</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="221123.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2022-11-23
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="2211232.html">
+                            PSP游戏分享
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">分享</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="2211232.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2022-05-24
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="220524.html">
+                            大工22春《大学英语3》在线测试
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">试卷</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="220524.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2022-04-24
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="220424.html">
+                            个人文件分享
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">分享</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="220424.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2022-04-15
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="220415.html">
+                            书单（收藏不看系列）
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">书单</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="220415.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2021-12-29
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="211229.html">
+                            无题
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">祖</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="211229.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2021-08-02
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="210802.html">
+                            关于M2固态(sata协议)转sata
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">固态</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="210802.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2021-05-07
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="210507.html">
+                            DELL 7050 MFF 黑苹果
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">黑苹果</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="210507.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2021-03-15
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="210315.html">
+                            送你的名字去火星
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">火星</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="210315.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2020-12-18
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="201218.html">
+                            debian10修改默认bash为zsh 
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">Debian</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="201218.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2020-12-15
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="201215.html">
+                            在台式机上安装chrome os的注意事项
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">ChromeOS</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="201215.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2020-09-29
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="200929.html">
+                            Debian10 解决依赖问题
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">Debian</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="200929.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2020-09-23
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="200923.html">
+                            linux下使用aria2下载b站视频
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">aria2</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="200923.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2020-09-13
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="200913.html">
+                            关于本站
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">建站</span>
+                        
+                        <span class="tag">github</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="200913.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2020-09-13
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="2009132.html">
+                            搭建本站所使用的相关网站
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">建站</span>
+                        
+                        <span class="tag">github</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="2009132.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2020-09-13
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="2009133.html">
+                            旧随笔
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">建站</span>
+                        
+                        <span class="tag">github</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="2009133.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <article class="post-card">
+                <div class="card-header">
+                    <div class="post-meta">
+                        <time class="post-date">
+                            <i class="far fa-calendar"></i>
+                            2020-09-13
+                        </time>
+                        <span class="post-author">
+                            <i class="far fa-user"></i>
+                              
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <h3 class="post-title">
+                        <a href="2009134.html">
+                            chromebook使用体验
+                        </a>
+                    </h3>
+
+                    <p class="post-excerpt">
+                          
+                    </p>
+
+                    
+                    <div class="post-tags">
+                        
+                        <span class="tag">chromebook</span>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="card-footer">
+                    <a href="2009134.html" class="read-more">
+                        阅读全文
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+        </div>
+        
+        
+    </div>
+</section>
 
 
+    </main>
 
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content" style="text-align: center;">
+            <p>&copy; <span id="current-year"></span> 版权所有</p>
+        </div>
+    </footer>
 
-
-
-  </body>
+    <!-- JavaScript -->
+    <script src="static/js/main.js"></script>
+    <script src="static/js/prism.js"></script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
 </html>
