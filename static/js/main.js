@@ -2,15 +2,35 @@
 
 // 等待DOM加载完成
 document.addEventListener('DOMContentLoaded', function() {
-    // 初始化所有功能
+    // 使用requestIdleCallback延迟执行非关键功能
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => {
+            initCodeCopy();
+            initSearch();
+        }, { timeout: 500 });
+        
+        requestIdleCallback(() => {
+            initSmoothScroll();
+            initReadingProgress();
+            initAnimations();
+        }, { timeout: 1000 });
+    } else {
+        // 降级处理
+        setTimeout(() => {
+            initCodeCopy();
+            initSearch();
+        }, 50);
+        
+        setTimeout(() => {
+            initSmoothScroll();
+            initReadingProgress();
+            initAnimations();
+        }, 100);
+    }
+    
+    // 立即执行关键功能
     initNavbar();
     initBackToTop();
-    initCodeBlocks(); // 先初始化代码块（添加行号）
-    initCodeCopy();   // 再初始化复制功能
-    initSmoothScroll();
-    initReadingProgress();
-    initSearch();
-    initAnimations();
 });
 
 // 导航栏滚动效果
@@ -20,15 +40,13 @@ function initNavbar() {
 
     let lastScrollY = window.scrollY;
     
+    // 设置初始背景色（根据当前主题）
+    updateNavbarBackground();
+    
     window.addEventListener('scroll', () => {
         const currentScrollY = window.scrollY;
         
-        if (currentScrollY > 100) {
-            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-            navbar.style.backdropFilter = 'blur(10px)';
-        } else {
-            navbar.style.background = 'rgba(255, 255, 255, 0.8)';
-        }
+        updateNavbarOnScroll(currentScrollY);
         
         // 隐藏/显示导航栏
         if (currentScrollY > lastScrollY && currentScrollY > 200) {
@@ -38,7 +56,47 @@ function initNavbar() {
         }
         
         lastScrollY = currentScrollY;
+    }, { passive: true }); // 使用passive监听器提高滚动性能
+    
+    // 监听主题变化
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+                updateNavbarBackground();
+            }
+        });
     });
+    
+    observer.observe(document.documentElement, {
+        attributes: true
+    });
+}
+
+function updateNavbarBackground() {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+    
+    if (document.documentElement.getAttribute('data-theme') === 'dark') {
+        navbar.style.background = 'rgba(26, 32, 44, 0.95)';
+    } else {
+        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+    }
+}
+
+function updateNavbarOnScroll(scrollY) {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+    
+    if (scrollY > 100) {
+        updateNavbarBackground();
+        navbar.style.backdropFilter = 'blur(10px)';
+    } else {
+        if (document.documentElement.getAttribute('data-theme') === 'dark') {
+            navbar.style.background = 'rgba(26, 32, 44, 0.95)';
+        } else {
+            navbar.style.background = 'rgba(255, 255, 255, 0.8)';
+        }
+    }
 }
 
 // 返回顶部按钮
@@ -52,7 +110,7 @@ function initBackToTop() {
         } else {
             backToTopButton.classList.remove('visible');
         }
-    });
+    }, { passive: true });
 
     backToTopButton.addEventListener('click', () => {
         window.scrollTo({
@@ -67,6 +125,9 @@ function initCodeCopy() {
     // 查找所有代码块（适配Prism.js）
     const codeBlocks = document.querySelectorAll('pre[class*="language-"] code, pre code');
     
+    // 批量处理代码块
+    const fragment = document.createDocumentFragment();
+    
     codeBlocks.forEach(codeBlock => {
         // 创建复制按钮
         const copyButton = document.createElement('button');
@@ -79,7 +140,7 @@ function initCodeCopy() {
         codeBlock.parentNode.appendChild(copyButton);
         
         // 添加点击事件
-        copyButton.addEventListener('click', () => {
+        copyButton.addEventListener('click', function() {
             // 获取代码文本
             const codeText = codeBlock.textContent;
             
@@ -127,14 +188,29 @@ function initReadingProgress() {
     progressBar.innerHTML = '<div class="progress-bar"></div>';
     document.body.appendChild(progressBar);
     
-    // 监听滚动事件更新进度条
-    window.addEventListener('scroll', () => {
+    // 使用节流优化滚动事件处理
+    let ticking = false;
+    
+    function updateProgress() {
         const scrollTop = window.scrollY;
         const docHeight = document.body.scrollHeight - window.innerHeight;
         const progress = (scrollTop / docHeight) * 100;
         
         progressBar.querySelector('.progress-bar').style.width = progress + '%';
-    });
+        ticking = false;
+    }
+    
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(updateProgress);
+            ticking = true;
+        }
+    }
+    
+    // 监听滚动事件更新进度条
+    window.addEventListener('scroll', () => {
+        requestTick();
+    }, { passive: true });
 }
 
 // 搜索功能
@@ -146,15 +222,17 @@ function initSearch() {
     
     let searchData = [];
     
-    // 加载搜索数据
-    fetch('/search.json')
-        .then(response => response.json())
-        .then(data => {
-            searchData = data;
-        })
-        .catch(err => console.error('搜索数据加载失败:', err));
+    // 延迟加载搜索数据
+    setTimeout(() => {
+        fetch('/search.json')
+            .then(response => response.json())
+            .then(data => {
+                searchData = data;
+            })
+            .catch(err => console.error('搜索数据加载失败:', err));
+    }, 1000);
     
-    searchInput.addEventListener('input', (e) => {
+    searchInput.addEventListener('input', debounce((e) => {
         const query = e.target.value.toLowerCase().trim();
         
         if (query.length < 2) {
@@ -169,7 +247,7 @@ function initSearch() {
         );
         
         displaySearchResults(results, query);
-    });
+    }, 300));
     
     function displaySearchResults(results, query) {
         if (results.length === 0) {
@@ -250,92 +328,6 @@ function initAnimations() {
         }
     `;
     document.head.appendChild(style);
-}
-
-
-// 阅读时间计算
-function calculateReadingTime() {
-    const content = document.querySelector('.post-content');
-    if (!content) return;
-    
-    const text = content.textContent;
-    const wordCount = text.trim().split(/\s+/).length;
-    const readingTime = Math.ceil(wordCount / 200);
-    
-    const readingTimeElement = document.querySelector('.reading-time');
-    if (readingTimeElement) {
-        readingTimeElement.textContent = `${readingTime} 分钟阅读`;
-    }
-}
-
-// 图片懒加载
-function initLazyLoading() {
-    const images = document.querySelectorAll('img[data-src]');
-    
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                imageObserver.unobserve(img);
-            }
-        });
-    });
-    
-    images.forEach(img => imageObserver.observe(img));
-}
-
-// 社交分享
-function initSocialShare() {
-    const shareButtons = document.querySelectorAll('.share-button');
-    
-    shareButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            const url = button.dataset.url;
-            const title = button.dataset.title;
-            
-            if (navigator.share) {
-                navigator.share({
-                    title: title,
-                    url: url
-                }).catch(console.error);
-            } else {
-                // 回退到复制链接
-                const copyButton = button;
-                navigator.clipboard.writeText(url).then(() => {
-                    copyButton.textContent = '已复制';
-                    setTimeout(() => {
-                        copyButton.textContent = '分享';
-                    }, 2000);
-                }).catch(err => {
-                    console.error('复制失败: ', err);
-                });
-            }
-        });
-    });
-}
-
-// 主题切换（预留）
-function initThemeToggle() {
-    const themeToggle = document.querySelector('.theme-toggle');
-    if (!themeToggle) return;
-    
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    setTheme(savedTheme);
-    
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        setTheme(newTheme);
-    });
-    
-    function setTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-        themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
-    }
 }
 
 // 工具函数
