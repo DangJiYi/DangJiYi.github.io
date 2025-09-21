@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +7,19 @@
     <meta name="description" content="--">
     <meta name="keywords" content="记录">
     
+    <!-- PWA相关meta标签 -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="记录站">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    
     <!-- 新增：添加网页标签图标（favicon） -->
     <link rel="icon" href="static/images/avatar.png" type="image/png">
     <link rel="shortcut icon" href="static/images/avatar.png" type="image/png">
+    
+    <!-- PWA manifest -->
+    <link rel="manifest" href="static/manifest.json">
 
     <!-- Open Graph -->
     <meta property="og:title" content="DangJiYi的记录站">
@@ -34,7 +44,11 @@
                 </a>
             </div>
             <div class="nav-menu">
-                <a href="https://eee.dangjiyi.eu.org/" class="nav-link">首页</a>
+                <a href="/" class="nav-link">首页</a>
+                <a href="/tags.html" class="nav-link">标签</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="切换主题">
+                    <i class="fas fa-moon"></i>
+                </button>
             </div>
         </div>
     </nav>
@@ -310,6 +324,11 @@
 
     </main>
 
+    <!-- 返回顶部按钮 -->
+    <div class="back-to-top" id="backToTop" title="返回顶部">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
     <!-- 页脚 -->
     <footer class="footer">
         <div class="footer-content" style="text-align: center;">
@@ -321,6 +340,70 @@
     <script src="static/js/main.js"></script>
     <script src="static/js/prism.js"></script>
     <script>
+        // 注册Service Worker以支持PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/static/js/service-worker.js')
+                    .then(function(registration) {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(function(err) {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+        
+        // 主题切换功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = themeToggle.querySelector('i');
+            
+            // 检查本地存储中的主题设置
+            const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            themeIcon.className = currentTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            
+            // 切换主题
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                themeIcon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+                
+                // 更新导航栏背景
+                const navbar = document.querySelector('.navbar');
+                if (newTheme === 'dark') {
+                    navbar.style.background = 'rgba(26, 32, 44, 0.95)';
+                } else {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                }
+            });
+        });
+        
+        // 返回顶部功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopButton = document.getElementById('backToTop');
+            
+            // 滚动时显示/隐藏返回顶部按钮
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+            
+            // 点击返回顶部
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
         document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
 </body>

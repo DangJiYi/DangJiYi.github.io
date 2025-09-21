@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +7,19 @@
     <meta name="description" content="--">
     <meta name="keywords" content="记录">
     
+    <!-- PWA相关meta标签 -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="记录站">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    
     <!-- 新增：添加网页标签图标（favicon） -->
     <link rel="icon" href="static/images/avatar.png" type="image/png">
     <link rel="shortcut icon" href="static/images/avatar.png" type="image/png">
+    
+    <!-- PWA manifest -->
+    <link rel="manifest" href="static/manifest.json">
 
     <!-- Open Graph -->
     <meta property="og:title" content="DangJiYi的记录站">
@@ -34,7 +44,11 @@
                 </a>
             </div>
             <div class="nav-menu">
-                <a href="https://eee.dangjiyi.eu.org/" class="nav-link">首页</a>
+                <a href="/" class="nav-link">首页</a>
+                <a href="/tags.html" class="nav-link">标签</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="切换主题">
+                    <i class="fas fa-moon"></i>
+                </button>
             </div>
         </div>
     </nav>
@@ -49,7 +63,7 @@
             <span class="gradient-text">静态博客站</span>
         </h1>
         <p class="hero-subtitle">
-            DangJiYI的记录站
+            DangJiYi的记录站
         </p>
         <div class="hero-stats">
             <div class="stat">
@@ -60,6 +74,13 @@
                 <span class="stat-number">30</span>
                 <span class="stat-label">标签</span>
             </div>
+        </div>
+        <!-- 搜索框 -->
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="搜索文章..." class="search-input">
+            <button id="search-button" class="search-button">
+                <i class="fas fa-search"></i>
+            </button>
         </div>
     </div>
     <div class="hero-visual">
@@ -74,9 +95,9 @@
     <div class="container">
         <h2 class="section-title">最新文章</h2>
         
-        <div class="posts-grid">
+        <div class="posts-grid" id="posts-container">
             
-            <article class="post-card">
+            <article class="post-card" data-tags="炒股" data-title="短线规矩">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -97,10 +118,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -118,7 +135,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="炒股,代码" data-title="通达信、同花顺涨跌停代码">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -139,10 +156,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -162,7 +175,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="炒股" data-title="中长线（三次修改）">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -183,10 +196,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -204,7 +213,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="炒股" data-title="中长线（二次修改）">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -225,10 +234,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -246,7 +251,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="炒股" data-title="中长线（暂定）">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -267,10 +272,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -288,7 +289,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="炒股" data-title="2024新手炒股熊市思路">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -309,10 +310,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -330,7 +327,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="分享" data-title="书单2">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -351,10 +348,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -372,7 +365,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="游戏" data-title="游戏列表">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -393,10 +386,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -414,7 +403,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="教程" data-title="下载谷歌云盘文件">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -435,10 +424,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -456,7 +441,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="隔空传送" data-title="关于安卓anddrop无法发现win10的解决办法">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -477,10 +462,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -498,7 +479,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="试卷" data-title="大连理工统考英语b 202304试题">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -519,10 +500,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -540,7 +517,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="记录" data-title="记人生xxxxxx">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -561,10 +538,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -582,7 +555,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="分享" data-title="番剧下载、谷歌镜像网址推荐">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -603,10 +576,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -624,7 +593,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="自启动" data-title="通过注册表设置开机启动">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -645,10 +614,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -666,7 +631,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="分享" data-title="PSP游戏分享">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -687,10 +652,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -708,7 +669,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="试卷" data-title="大工22春《大学英语3》在线测试">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -729,10 +690,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -750,7 +707,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="分享" data-title="个人文件分享">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -771,10 +728,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -792,7 +745,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="书单" data-title="书单（收藏不看系列）">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -813,10 +766,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -834,7 +783,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="祖" data-title="无题">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -855,10 +804,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -876,7 +821,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="固态" data-title="关于M2固态(sata协议)转sata">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -897,10 +842,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -918,7 +859,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="黑苹果" data-title="DELL 7050 MFF 黑苹果">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -939,10 +880,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -960,7 +897,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="火星" data-title="送你的名字去火星">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -981,10 +918,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -1002,7 +935,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="Debian" data-title="debian10修改默认bash为zsh ">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -1023,10 +956,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -1044,7 +973,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="ChromeOS" data-title="在台式机上安装chrome os的注意事项">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -1065,10 +994,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -1086,7 +1011,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="Debian" data-title="Debian10 解决依赖问题">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -1107,10 +1032,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -1128,7 +1049,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="aria2" data-title="linux下使用aria2下载b站视频">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -1149,10 +1070,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -1170,7 +1087,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="建站,github" data-title="关于本站">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -1191,10 +1108,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -1214,7 +1127,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="建站,github" data-title="搭建本站所使用的相关网站">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -1235,10 +1148,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -1258,7 +1167,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="建站,github" data-title="旧随笔">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -1279,10 +1188,6 @@
                         </a>
                     </h3>
 
-                    <p class="post-excerpt">
-                          
-                    </p>
-
                     
                     <div class="post-tags">
                         
@@ -1302,7 +1207,7 @@
                 </div>
             </article>
             
-            <article class="post-card">
+            <article class="post-card" data-tags="chromebook" data-title="chromebook使用体验">
                 <div class="card-header">
                     <div class="post-meta">
                         <time class="post-date">
@@ -1322,10 +1227,6 @@
                             chromebook使用体验
                         </a>
                     </h3>
-
-                    <p class="post-excerpt">
-                          
-                    </p>
 
                     
                     <div class="post-tags">
@@ -1350,8 +1251,54 @@
     </div>
 </section>
 
+<script>
+    // 搜索功能实现
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('search-input');
+        const searchButton = document.getElementById('search-button');
+        const postsContainer = document.getElementById('posts-container');
+        const postCards = document.querySelectorAll('.post-card');
+        
+        function performSearch() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            
+            if (searchTerm === '') {
+                // 如果搜索词为空，显示所有文章
+                postCards.forEach(card => {
+                    card.style.display = 'block';
+                });
+                return;
+            }
+            
+            postCards.forEach(card => {
+                const title = card.getAttribute('data-title').toLowerCase();
+                const tags = card.getAttribute('data-tags').toLowerCase();
+                const content = card.getAttribute('data-content').toLowerCase();
+                
+                if (title.includes(searchTerm) || tags.includes(searchTerm) || content.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        
+        // 绑定搜索事件
+        searchButton.addEventListener('click', performSearch);
+        searchInput.addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                performSearch();
+            }
+        });
+    });
+</script>
 
     </main>
+
+    <!-- 返回顶部按钮 -->
+    <div class="back-to-top" id="backToTop" title="返回顶部">
+        <i class="fas fa-arrow-up"></i>
+    </div>
 
     <!-- 页脚 -->
     <footer class="footer">
@@ -1364,6 +1311,70 @@
     <script src="static/js/main.js"></script>
     <script src="static/js/prism.js"></script>
     <script>
+        // 注册Service Worker以支持PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/static/js/service-worker.js')
+                    .then(function(registration) {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(function(err) {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+        
+        // 主题切换功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = themeToggle.querySelector('i');
+            
+            // 检查本地存储中的主题设置
+            const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            themeIcon.className = currentTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            
+            // 切换主题
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                themeIcon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+                
+                // 更新导航栏背景
+                const navbar = document.querySelector('.navbar');
+                if (newTheme === 'dark') {
+                    navbar.style.background = 'rgba(26, 32, 44, 0.95)';
+                } else {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                }
+            });
+        });
+        
+        // 返回顶部功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopButton = document.getElementById('backToTop');
+            
+            // 滚动时显示/隐藏返回顶部按钮
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+            
+            // 点击返回顶部
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
         document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
 </body>

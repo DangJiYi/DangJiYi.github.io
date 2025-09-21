@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // 初始化所有功能
     initNavbar();
     initBackToTop();
-    initCodeCopy();
+    initCodeBlocks(); // 先初始化代码块（添加行号）
+    initCodeCopy();   // 再初始化复制功能
     initSmoothScroll();
     initReadingProgress();
     initSearch();
@@ -61,58 +62,42 @@ function initBackToTop() {
     });
 }
 
-// 代码块复制功能
+// 代码复制功能
 function initCodeCopy() {
-    const codeBlocks = document.querySelectorAll('pre code');
+    // 查找所有代码块（适配Prism.js）
+    const codeBlocks = document.querySelectorAll('pre[class*="language-"] code, pre code');
     
     codeBlocks.forEach(codeBlock => {
-        const pre = codeBlock.parentElement;
-        const button = createCopyButton();
+        // 创建复制按钮
+        const copyButton = document.createElement('button');
+        copyButton.className = 'code-copy-btn';
+        copyButton.innerHTML = '<i class="fas fa-copy"></i>';
+        copyButton.setAttribute('aria-label', '复制代码');
         
-        pre.style.position = 'relative';
-        pre.appendChild(button);
+        // 将按钮添加到代码块的父元素(pre标签)中
+        codeBlock.parentNode.style.position = 'relative';
+        codeBlock.parentNode.appendChild(copyButton);
         
-        button.addEventListener('click', () => {
-            copyToClipboard(codeBlock.textContent, button);
+        // 添加点击事件
+        copyButton.addEventListener('click', () => {
+            // 获取代码文本
+            const codeText = codeBlock.textContent;
+            
+            // 复制到剪贴板
+            navigator.clipboard.writeText(codeText).then(() => {
+                // 复制成功
+                copyButton.innerHTML = '<i class="fas fa-check"></i>';
+                copyButton.classList.add('copied');
+                
+                // 3秒后恢复原状态
+                setTimeout(() => {
+                    copyButton.innerHTML = '<i class="fas fa-copy"></i>';
+                    copyButton.classList.remove('copied');
+                }, 3000);
+            }).catch(err => {
+                console.error('复制失败: ', err);
+            });
         });
-    });
-}
-
-function createCopyButton() {
-    const button = document.createElement('button');
-    button.className = 'copy-button';
-    button.innerHTML = '📋';
-    button.title = '复制代码';
-    button.style.cssText = `
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background: rgba(0, 0, 0, 0.7);
-        color: white;
-        border: none;
-        padding: 5px 10px;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 12px;
-        transition: all 0.3s ease;
-        opacity: 0;
-    `;
-    
-    return button;
-}
-
-function copyToClipboard(text, button) {
-    navigator.clipboard.writeText(text).then(() => {
-        button.innerHTML = '✅';
-        button.style.background = '#10b981';
-        
-        setTimeout(() => {
-            button.innerHTML = '📋';
-            button.style.background = 'rgba(0, 0, 0, 0.7)';
-        }, 2000);
-    }).catch(err => {
-        console.error('复制失败:', err);
-        button.innerHTML = '❌';
     });
 }
 
@@ -136,48 +121,20 @@ function initSmoothScroll() {
 
 // 阅读进度条
 function initReadingProgress() {
-    if (!document.querySelector('.post-content')) return;
-    
-    const progressBar = createProgressBar();
+    // 创建进度条元素
+    const progressBar = document.createElement('div');
+    progressBar.className = 'reading-progress';
+    progressBar.innerHTML = '<div class="progress-bar"></div>';
     document.body.appendChild(progressBar);
     
-    window.addEventListener('scroll', updateProgressBar);
-    
-    function createProgressBar() {
-        const bar = document.createElement('div');
-        bar.className = 'reading-progress';
-        bar.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            z-index: 1001;
-            transition: width 0.1s ease;
-        `;
-        return bar;
-    }
-    
-    function updateProgressBar() {
-        const content = document.querySelector('.post-content');
+    // 监听滚动事件更新进度条
+    window.addEventListener('scroll', () => {
         const scrollTop = window.scrollY;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const contentHeight = content.offsetHeight;
-        const contentTop = content.offsetTop;
-        const contentBottom = contentTop + contentHeight;
+        const docHeight = document.body.scrollHeight - window.innerHeight;
+        const progress = (scrollTop / docHeight) * 100;
         
-        let progress = 0;
-        
-        if (scrollTop >= contentTop && scrollTop <= contentBottom) {
-            const relativeScroll = scrollTop - contentTop;
-            progress = (relativeScroll / contentHeight) * 100;
-        } else if (scrollTop > contentBottom) {
-            progress = 100;
-        }
-        
-        progressBar.style.width = Math.min(100, Math.max(0, progress)) + '%';
-    }
+        progressBar.querySelector('.progress-bar').style.width = progress + '%';
+    });
 }
 
 // 搜索功能
@@ -295,6 +252,7 @@ function initAnimations() {
     document.head.appendChild(style);
 }
 
+
 // 阅读时间计算
 function calculateReadingTime() {
     const content = document.querySelector('.post-content');
@@ -345,7 +303,15 @@ function initSocialShare() {
                 }).catch(console.error);
             } else {
                 // 回退到复制链接
-                copyToClipboard(url, button);
+                const copyButton = button;
+                navigator.clipboard.writeText(url).then(() => {
+                    copyButton.textContent = '已复制';
+                    setTimeout(() => {
+                        copyButton.textContent = '分享';
+                    }, 2000);
+                }).catch(err => {
+                    console.error('复制失败: ', err);
+                });
             }
         });
     });
@@ -384,22 +350,3 @@ function debounce(func, wait) {
         timeout = setTimeout(later, wait);
     };
 }
-
-// 初始化阅读时间计算
-document.addEventListener('DOMContentLoaded', calculateReadingTime);
-
-// 添加鼠标悬停效果
-document.addEventListener('DOMContentLoaded', () => {
-    const codeBlocks = document.querySelectorAll('pre');
-    codeBlocks.forEach(block => {
-        block.addEventListener('mouseenter', () => {
-            const button = block.querySelector('.copy-button');
-            if (button) button.style.opacity = '1';
-        });
-        
-        block.addEventListener('mouseleave', () => {
-            const button = block.querySelector('.copy-button');
-            if (button) button.style.opacity = '0';
-        });
-    });
-});

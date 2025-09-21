@@ -1,0 +1,16 @@
+{
+  "name": "DangJiYi的记录站",
+  "short_name": "记录站",
+  "description": "DangJiYi的个人博客站",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#667eea",
+  "icons": [
+    {
+      "src": "images/avatar.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
