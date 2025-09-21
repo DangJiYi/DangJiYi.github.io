@@ -1,5 +1,5 @@
 // Service Worker for PWA support
-const CACHE_NAME = 'blog-cache-v1.1';
+const CACHE_NAME = 'blog-cache-v1';
 const urlsToCache = [
   '/',
   '/static/css/style.css',
@@ -15,35 +15,10 @@ self.addEventListener('install', event => {
         return cache.addAll(urlsToCache);
       })
   );
-  // 不等待激活，立即接管控制权
-  self.skipWaiting();
 });
 
 // 获取事件 - 实现离线功能
 self.addEventListener('fetch', event => {
-  // 对于非GET请求或包含range头的请求，直接网络请求
-  if (event.request.method !== 'GET' || event.request.headers.get('range')) {
-    return;
-  }
-  
-  // 检查是否为同源请求
-  const url = new URL(event.request.url);
-  const isSameOrigin = url.origin === self.location.origin;
-  
-  // 只缓存同源的特定资源
-  const shouldCache = isSameOrigin && (
-    event.request.destination === 'document' ||
-    event.request.destination === 'style' ||
-    event.request.destination === 'script' ||
-    event.request.destination === 'image'
-  );
-  
-  if (!shouldCache) {
-    // 对于不应该缓存的请求，直接网络请求
-    event.respondWith(fetch(event.request));
-    return;
-  }
-
   event.respondWith(
     caches.match(event.request)
       .then(response => {
@@ -88,6 +63,4 @@ self.addEventListener('activate', event => {
       );
     })
   );
-  // 立即接管所有页面的控制权
-  return self.clients.claim();
 });

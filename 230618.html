@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="static/images/avatar.png" type="image/png">
     
     <!-- PWA manifest -->
-    <link rel="manifest" href="static/manifest.json?v=1.1">
+    <link rel="manifest" href="static/manifest.json?v=1.0">
 
     <!-- Open Graph -->
     <meta property="og:title" content="DangJiYi的记录站">
@@ -28,14 +28,10 @@
     <meta property="og:url" content="">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="static/css/style.css?v=1.1" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="static/css/prism.css?v=1.1" media="print" onload="this.media='all'">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    
-    <!-- 预加载关键资源 -->
-    <link rel="preload" href="static/css/style.css?v=1.1" as="style">
-    <link rel="preload" href="static/js/main.js?v=1.1" as="script">
+    <link rel="stylesheet" href="static/css/style.css?v=1.0">
+    <link rel="stylesheet" href="static/css/prism.css?v=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- 导航栏 -->
@@ -348,13 +344,13 @@ CDPUserSvc_随机数字 的start属性修改为2 <br />
     </footer>
 
     <!-- JavaScript -->
-    <script src="static/js/main.js?v=1.1" defer></script>
-    <script src="static/js/prism.js?v=1.1" defer></script>
+    <script src="static/js/main.js?v=1.0"></script>
+    <script src="static/js/prism.js?v=1.0"></script>
     <script>
         // 注册Service Worker以支持PWA
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/static/js/service-worker.js?v=1.1')
+                navigator.serviceWorker.register('/static/js/service-worker.js?v=1.0')
                     .then(function(registration) {
                         console.log('ServiceWorker registration successful with scope: ', registration.scope);
                     })

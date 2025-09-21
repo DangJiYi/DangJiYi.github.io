@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="static/images/avatar.png" type="image/png">
     
     <!-- PWA manifest -->
-    <link rel="manifest" href="static/manifest.json?v=1.1">
+    <link rel="manifest" href="static/manifest.json?v=1.0">
 
     <!-- Open Graph -->
     <meta property="og:title" content="DangJiYi的记录站">
@@ -28,14 +28,10 @@
     <meta property="og:url" content="">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="static/css/style.css?v=1.1" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="static/css/prism.css?v=1.1" media="print" onload="this.media='all'">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    
-    <!-- 预加载关键资源 -->
-    <link rel="preload" href="static/css/style.css?v=1.1" as="style">
-    <link rel="preload" href="static/js/main.js?v=1.1" as="script">
+    <link rel="stylesheet" href="static/css/style.css?v=1.0">
+    <link rel="stylesheet" href="static/css/prism.css?v=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- 导航栏 -->
@@ -109,7 +105,7 @@ OC更新到0.7.2，由于我没有升级到big   sur，而是一直使用Catalin
 opencore configurator内修改：<br />
 Misc--security--SecureBootModel--j137<br />
 UEFI--APFS--MinVersion--无限制 or Catalina  </p>
-<p>( 手动修改  MinDate -1 MinVersion -1   或
+<p>( 手动修改  MinDate -1 MinVersion -1   或<br />
 MinDate 20200306 MinVersion 1412101001000000 )</p>
 <p>8月16日更新<br />
 没忍住，试着更新Big Sur，直接更新到11.5.2，将上面两个选项修改为默认后开机正常，Wi-Fi无法使用，最后发现Wi-Fi的kexts文件每个大版本各一个，更换后正常，风扇声音比之前感觉有点大</p>
@@ -362,13 +358,13 @@ MinDate 20200306 MinVersion 1412101001000000 )</p>
     </footer>
 
     <!-- JavaScript -->
-    <script src="static/js/main.js?v=1.1" defer></script>
-    <script src="static/js/prism.js?v=1.1" defer></script>
+    <script src="static/js/main.js?v=1.0"></script>
+    <script src="static/js/prism.js?v=1.0"></script>
     <script>
         // 注册Service Worker以支持PWA
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/static/js/service-worker.js?v=1.1')
+                navigator.serviceWorker.register('/static/js/service-worker.js?v=1.0')
                     .then(function(registration) {
                         console.log('ServiceWorker registration successful with scope: ', registration.scope);
                     })
